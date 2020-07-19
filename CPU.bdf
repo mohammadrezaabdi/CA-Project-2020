@@ -759,7 +759,7 @@ applicable agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 128 80)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 264 456 456 488))
+	(annotation_block (parameter)(rect 128 440 320 472))
 )
 (symbol
 	(rect 592 144 808 336)
@@ -1287,14 +1287,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 1192 744)
-	(pt 1256 744)
-)
-(connector
-	(pt 1192 744)
-	(pt 1192 344)
-)
-(connector
 	(pt 1176 504)
 	(pt 1256 504)
 )
@@ -1433,14 +1425,6 @@ applicable agreement for further details.
 	(pt 552 360)
 )
 (connector
-	(pt 1192 344)
-	(pt 544 344)
-)
-(connector
-	(pt 544 224)
-	(pt 544 344)
-)
-(connector
 	(pt 624 352)
 	(pt 536 352)
 )
@@ -1465,10 +1449,6 @@ applicable agreement for further details.
 	(pt 592 208)
 )
 (connector
-	(pt 544 224)
-	(pt 592 224)
-)
-(connector
 	(pt 552 240)
 	(pt 592 240)
 )
@@ -1479,10 +1459,6 @@ applicable agreement for further details.
 (connector
 	(pt 512 208)
 	(pt 536 208)
-)
-(connector
-	(pt 512 224)
-	(pt 544 224)
 )
 (connector
 	(pt 512 240)
@@ -1544,6 +1520,10 @@ applicable agreement for further details.
 	(pt -344 184)
 	(pt 360 184)
 )
+(connector
+	(pt 512 224)
+	(pt 592 224)
+)
 (junction (pt 1560 456))
 (junction (pt 896 456))
 (junction (pt 928 488))
@@ -1551,6 +1531,5 @@ applicable agreement for further details.
 (junction (pt 560 256))
 (junction (pt 1224 408))
 (junction (pt 552 240))
-(junction (pt 544 224))
 (junction (pt 536 208))
 (junction (pt 528 192))
