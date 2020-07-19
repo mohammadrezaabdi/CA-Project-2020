@@ -1,0 +1,13 @@
+# Ignore everything
+*
+
+# But not these files...
+
+!.gitignore
+!.v
+!.bsf
+!.bdf
+!.mem
+!.txt
+!.pdf
+!.docx
