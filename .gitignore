@@ -11,3 +11,5 @@
 !*.txt
 !*.pdf
 !*.docx
+!tests/
+!alu/
