@@ -5,7 +5,7 @@ module CU_sequencer(cpu_clk, reset, IF_clk, ID_clk, ALU_clk, MEM_clk, BR_clk);
   reg IF_clk, ID_clk, ALU_clk, MEM_clk, BR_clk;
 
   always @ (posedge cpu_clk) begin
-    if(reset) begin
+    if (reset) begin
       IF_clk <= 1;
       ID_clk <= 0;
       ALU_clk <= 0;

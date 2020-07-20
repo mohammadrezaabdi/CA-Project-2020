@@ -68,8 +68,8 @@ applicable agreement for further details.
 	(port
 		(pt 216 32)
 		(output)
-		(text "branch_opcode[3..0]" (rect 0 0 100 12)(font "Arial" ))
-		(text "branch_opcode[3..0]" (rect 95 27 195 39)(font "Arial" ))
+		(text "branch_opcode[2..0]" (rect 0 0 100 12)(font "Arial" ))
+		(text "branch_opcode[2..0]" (rect 95 27 195 39)(font "Arial" ))
 		(line (pt 216 32)(pt 200 32)(line_width 3))
 	)
 	(port
@@ -96,16 +96,16 @@ applicable agreement for further details.
 	(port
 		(pt 216 96)
 		(output)
-		(text "mem_read" (rect 0 0 51 12)(font "Arial" ))
-		(text "mem_read" (rect 144 91 195 103)(font "Arial" ))
-		(line (pt 216 96)(pt 200 96)(line_width 1))
+		(text "mem_read[1..0]" (rect 0 0 77 12)(font "Arial" ))
+		(text "mem_read[1..0]" (rect 118 91 195 103)(font "Arial" ))
+		(line (pt 216 96)(pt 200 96)(line_width 3))
 	)
 	(port
 		(pt 216 112)
 		(output)
-		(text "mem_write" (rect 0 0 53 12)(font "Arial" ))
-		(text "mem_write" (rect 142 107 195 119)(font "Arial" ))
-		(line (pt 216 112)(pt 200 112)(line_width 1))
+		(text "mem_write[1..0]" (rect 0 0 79 12)(font "Arial" ))
+		(text "mem_write[1..0]" (rect 116 107 195 119)(font "Arial" ))
+		(line (pt 216 112)(pt 200 112)(line_width 3))
 	)
 	(port
 		(pt 216 128)

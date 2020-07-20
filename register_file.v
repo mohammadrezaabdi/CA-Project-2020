@@ -16,7 +16,9 @@ module register_file(reg_read, reg_write, reg_reset, write_data, opcode, reg1, r
 	for (i=0; i<32; i=i+1) begin
 		register_file[i] = 32'b0;
 	end
-    $writememb("register_file.mem",register_file);
+
+    //test
+    $writememb("tests/register_file.mem", register_file);
   end
 
   // write into register file
@@ -25,30 +27,28 @@ module register_file(reg_read, reg_write, reg_reset, write_data, opcode, reg1, r
       case (opcode)
         6'b010000: register_file[reg1][15:0] = write_data[15:0]; //LDI
         6'b010001: register_file[reg1][31:16] = write_data[15:0]; // LUI
-        6'b011000: register_file[reg1][7:0] = write_data[7:0]; // LB
+        6'b011010: register_file[reg1][7:0] = write_data[7:0]; // LB
         default: register_file[reg1] = write_data;
       endcase
-      $writememb("register_file.mem",register_file);
+
+      //test
+      $writememb("tests/register_file.mem", register_file);
     end
   end
 
   // read from register file
   always @ (posedge clk) begin
     if (reg_read && !reg_write && !reg_reset) begin
-      operand0 <= register_file[reg1];
+      operand0 = register_file[reg1];
       if(opcode[5:1] == 5'b01111) begin // BEQ & BLT
-        operand1 <= register_file[reg1];
-        operand2 <= register_file[reg2];
+        operand1 = register_file[reg1];
+        operand2 = register_file[reg2];
       end
       else begin
-        operand1 <= register_file[reg2];
-        operand2 <= (|opcode && opcode[4] == 1'b0) ? register_file[reg3] : imm;
+        operand1 = register_file[reg2];
+        operand2 = (|opcode && opcode[4] == 1'b0) ? register_file[reg3] : imm;
       end
     end
-    end
-
-  initial begin
-    $readmemb("register_file.mem", register_file);
   end
 
 endmodule

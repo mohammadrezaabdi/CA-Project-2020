@@ -2,18 +2,18 @@ module CU_logic (opcode, IF_clk, ID_clk, ALU_clk, MEM_clk, RB_BR_clk, branch_opc
 
   input [5:0] opcode;
   input IF_clk, ID_clk, ALU_clk, MEM_clk, RB_BR_clk;
-  output halt, reg_read, reg_write, mem_read, mem_write, alu_enable;
+  output halt, reg_read, reg_write, alu_enable;
   output [4:0] alu_opcode;
-  output [3:0] branch_opcode;
-  output [1:0] mux_opcode;
-  reg halt, reg_read, reg_write, mem_read, mem_write;
+  output [2:0] branch_opcode;
+  output [1:0] mux_opcode, mem_write, mem_read;
+  reg halt, reg_read, reg_write;
   reg [4:0] alu_opcode;
-  reg [3:0] branch_opcode;
+  reg [2:0] branch_opcode;
   reg alu_enable;
-  reg [1:0] mux_opcode;
+  reg [1:0] mux_opcode, mem_write, mem_read;
 
   // conditions
-  wire HLT = (opcode == 6'b000000) ? 1'b1 : 1'b0;
+  wire HLT = (opcode == 6'b000000 || HLT === 1'b1) ? 1'b1 : 1'b0;
   wire LDI = (opcode == 6'b010000) ? 1'b1 : 1'b0;
   wire LUI = (opcode == 6'b010001) ? 1'b1 : 1'b0;
   wire JMP = (opcode == 6'b011100) ? 1'b1 : 1'b0;
@@ -34,14 +34,17 @@ module CU_logic (opcode, IF_clk, ID_clk, ALU_clk, MEM_clk, RB_BR_clk, branch_opc
 
   always @ (posedge IF_clk) begin // signals Initialization
     branch_opcode = 3'b0;
-    halt = 1'b0;
+    halt = HLT;
     reg_read = 1'b0;
     reg_write = 1'b0;
-    mem_read = 1'b0;
-    mem_write = 1'b0;
+    mem_read = 2'b0;
+    mem_write = 2'b0;
     alu_opcode = 5'b0;
     alu_enable = 1'b0;
     mux_opcode = 2'b0;
+
+    //Test
+      $display($time, " IF : halt=%b", halt);
   end
 
   always @ (posedge ID_clk) begin // register file reading
@@ -49,9 +52,12 @@ module CU_logic (opcode, IF_clk, ID_clk, ALU_clk, MEM_clk, RB_BR_clk, branch_opc
       reg_read = 1'b1;
       reg_write = 1'b0;
     end
+
+    //Test
+      $display($time, " ID : reg_read=%b", reg_read);
   end
 
-  always @ (posedge ALU_clk) begin // ALU handling
+  always @ (posedge ALU_clk) begin // ALU opcodes & branch handling
     if (HLT || IMM_TO_REG || JMP || JR) begin
       alu_enable = 1'b0;
     end
@@ -70,27 +76,41 @@ module CU_logic (opcode, IF_clk, ID_clk, ALU_clk, MEM_clk, RB_BR_clk, branch_opc
         alu_opcode = opcode[4:0];
       end
     end
+
+    if (HLT) begin // halt checking
+      halt = 1'b1;
+    end
+    else if (BRANCH) begin // branch opcode handling
+      branch_opcode = {1'b1, opcode[1:0]};
+    end
+
+    //Test
+      $display($time, " ALU : enable=%b", alu_enable);
   end
 
   always @ (posedge MEM_clk) begin // memory handling
     if (MEM_LOAD) begin
-      mem_read = 1'b1;
-      mem_write = 1'b0;
+      mem_write = 2'b0;
+      if (LB) begin
+        mem_read = 2'b01;
+      end else begin
+        mem_read = 2'b11;
+      end
     end
     else if (MEM_STORE) begin
-      mem_read = 1'b0;
-      mem_write = 1'b1;
+      mem_read = 2'b0;
+      if (SB) begin
+        mem_write = 2'b01;
+      end else begin
+        mem_write = 2'b11;
+      end
     end
+
+    //Test
+      $display($time, " MEM : read=%b write=%b", mem_read, mem_write);
   end
 
-  always @ (posedge RB_BR_clk) begin // branching handling & register file writing
-    if (HLT) begin
-      halt = 1'b1;
-    end
-    else if (BRANCH) begin
-      branch_opcode = {1'b1, opcode[1:0]};
-    end
-
+  always @ (posedge RB_BR_clk) begin // register file writing
     if (!(HLT || BRANCH || MEM_STORE)) begin
       reg_read = 1'b0;
       reg_write = 1'b1;
@@ -104,6 +124,9 @@ module CU_logic (opcode, IF_clk, ID_clk, ALU_clk, MEM_clk, RB_BR_clk, branch_opc
         mux_opcode = 2'b10;
       end
     end
+
+    //Test
+      $display($time, " RB BR : write=%b read=%b", reg_write, reg_read);
   end
 
 endmodule

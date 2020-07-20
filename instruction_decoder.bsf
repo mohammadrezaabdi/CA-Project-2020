@@ -72,13 +72,6 @@ applicable agreement for further details.
 		(text "sr_amount[4..0]" (rect 78 107 155 119)(font "Arial" ))
 		(line (pt 176 112)(pt 160 112)(line_width 3))
 	)
-	(port
-		(pt 176 128)
-		(output)
-		(text "reserved[5..0]" (rect 0 0 69 12)(font "Arial" ))
-		(text "reserved[5..0]" (rect 86 123 155 135)(font "Arial" ))
-		(line (pt 176 128)(pt 160 128)(line_width 3))
-	)
 	(drawing
 		(rectangle (rect 16 16 160 144)(line_width 1))
 	)
