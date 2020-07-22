@@ -13,9 +13,4 @@ module instruction_decoder(ins, opcode, reg1, reg2, reg3, imm, sr_amount);
   wire reserved = (|ins && ins[30] == 1'b0) ? ins[5:0] : 6'b0;
   assign imm = (ins[30] == 1'b1) ? {{16{ins[15]}}, ins[15:0]} : 32'b0;
 
-  //test
-  always @ (ins) begin
-    $display($time, " opcode=%b reg1=%d reg2=%d reg3=%d imm=%d shift=%d reserved=%b", opcode, reg1, reg2, reg3, imm, sr_amount, reserved);
-  end
-
 endmodule
