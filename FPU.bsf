@@ -20,9 +20,9 @@ applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 312 208)
+	(rect 16 16 312 304)
 	(text "FPU" (rect 5 0 27 14)(font "Arial" (font_size 8)))
-	(text "inst" (rect 8 176 25 188)(font "Arial" ))
+	(text "inst" (rect 8 272 25 284)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -135,7 +135,49 @@ applicable agreement for further details.
 		(text "ins_mem_clk" (rect 204 139 275 153)(font "Arial" (font_size 8)))
 		(line (pt 296 144)(pt 280 144)(line_width 1))
 	)
+	(port
+		(pt 296 160)
+		(output)
+		(text "DIVZ" (rect 0 0 28 14)(font "Arial" (font_size 8)))
+		(text "DIVZ" (rect 247 155 275 169)(font "Arial" (font_size 8)))
+		(line (pt 296 160)(pt 280 160)(line_width 1))
+	)
+	(port
+		(pt 296 176)
+		(output)
+		(text "QNAN" (rect 0 0 35 14)(font "Arial" (font_size 8)))
+		(text "QNAN" (rect 240 171 275 185)(font "Arial" (font_size 8)))
+		(line (pt 296 176)(pt 280 176)(line_width 1))
+	)
+	(port
+		(pt 296 192)
+		(output)
+		(text "SNAN" (rect 0 0 34 14)(font "Arial" (font_size 8)))
+		(text "SNAN" (rect 241 187 275 201)(font "Arial" (font_size 8)))
+		(line (pt 296 192)(pt 280 192)(line_width 1))
+	)
+	(port
+		(pt 296 208)
+		(output)
+		(text "INEX" (rect 0 0 25 14)(font "Arial" (font_size 8)))
+		(text "INEX" (rect 250 203 275 217)(font "Arial" (font_size 8)))
+		(line (pt 296 208)(pt 280 208)(line_width 1))
+	)
+	(port
+		(pt 296 224)
+		(output)
+		(text "UNFL" (rect 0 0 30 14)(font "Arial" (font_size 8)))
+		(text "UNFL" (rect 245 219 275 233)(font "Arial" (font_size 8)))
+		(line (pt 296 224)(pt 280 224)(line_width 1))
+	)
+	(port
+		(pt 296 240)
+		(output)
+		(text "OVFL" (rect 0 0 33 14)(font "Arial" (font_size 8)))
+		(text "OVFL" (rect 242 235 275 249)(font "Arial" (font_size 8)))
+		(line (pt 296 240)(pt 280 240)(line_width 1))
+	)
 	(drawing
-		(rectangle (rect 16 16 280 176)(line_width 1))
+		(rectangle (rect 16 16 280 272)(line_width 1))
 	)
 )

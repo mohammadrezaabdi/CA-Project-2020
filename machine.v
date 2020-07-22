@@ -14,14 +14,20 @@
 
 // PROGRAM		"Quartus II"
 // VERSION		"Version 9.0 Build 132 02/25/2009 SJ Web Edition"
-// CREATED ON	"Thu Jul 23 00:39:04 2020"
+// CREATED ON	"Thu Jul 23 03:54:25 2020"
 
 module machine(
 	reg_file_reset,
 	pc_reset,
 	clk,
 	seq_reset,
-	interrupt_reset
+	interrupt_reset,
+	QNaN,
+	SNaN,
+	inexact,
+	overflow,
+	underflow,
+	div_by_zero
 );
 
 
@@ -30,6 +36,12 @@ input	pc_reset;
 input	clk;
 input	seq_reset;
 input	interrupt_reset;
+output	QNaN;
+output	SNaN;
+output	inexact;
+output	overflow;
+output	underflow;
+output	div_by_zero;
 
 wire	SYNTHESIZED_WIRE_0;
 wire	SYNTHESIZED_WIRE_1;
@@ -91,6 +103,12 @@ FPU	b2v_inst1(
 	.interrupt(SYNTHESIZED_WIRE_27),
 	.data_mem_clk(SYNTHESIZED_WIRE_14),
 	.ins_mem_clk(SYNTHESIZED_WIRE_15),
+	.DIVZ(div_by_zero),
+	.QNAN(QNaN),
+	.SNAN(SNaN),
+	.INEX(inexact),
+	.UNFL(overflow),
+	.OVFL(underflow),
 	.mem_address(SYNTHESIZED_WIRE_21),
 	.mem_read(SYNTHESIZED_WIRE_22),
 	.mem_word_in(SYNTHESIZED_WIRE_25),

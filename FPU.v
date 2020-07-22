@@ -14,7 +14,7 @@
 
 // PROGRAM		"Quartus II"
 // VERSION		"Version 9.0 Build 132 02/25/2009 SJ Web Edition"
-// CREATED ON	"Wed Jul 22 16:32:52 2020"
+// CREATED ON	"Thu Jul 23 03:45:41 2020"
 
 module FPU(
 	clk,
@@ -28,6 +28,12 @@ module FPU(
 	ins_mem_clk,
 	data_mem_clk,
 	interrupt,
+	DIVZ,
+	QNAN,
+	SNAN,
+	INEX,
+	UNFL,
+	OVFL,
 	mem_address,
 	mem_read,
 	mem_word_in,
@@ -47,6 +53,12 @@ input	[31:0] pc_in;
 output	ins_mem_clk;
 output	data_mem_clk;
 output	interrupt;
+output	DIVZ;
+output	QNAN;
+output	SNAN;
+output	INEX;
+output	UNFL;
+output	OVFL;
 output	[31:0] mem_address;
 output	[1:0] mem_read;
 output	[31:0] mem_word_in;
@@ -106,6 +118,12 @@ fpu_ALU	b2v_inst(
 	.operand1(SYNTHESIZED_WIRE_10),
 	.operand2(SYNTHESIZED_WIRE_11),
 	.com_result(SYNTHESIZED_WIRE_17),
+	.DIVZ(DIVZ),
+	.QNAN(QNAN),
+	.SNAN(SNAN),
+	.INEX(INEX),
+	.UNFL(UNFL),
+	.OVFL(OVFL),
 	.result(SYNTHESIZED_WIRE_23));
 
 
