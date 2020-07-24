@@ -1,5 +1,5 @@
 // memory data file (do not edit the following line - required for mem load use)
-// instance=/testbench/test/b2v_inst4/entries
+// instance=/testbench/test/b2v_inst2/b2v_inst6/entries
 // format=bin addressradix=h dataradix=b version=1.0 wordsperline=1 noaddress
 00000000
 00001000
@@ -32,10 +32,10 @@ xxxxxxxx
 xxxxxxxx
 xxxxxxxx
 xxxxxxxx
-xxxxxxxx
-xxxxxxxx
-xxxxxxxx
-xxxxxxxx
+00111010
+11011110
+01101000
+10110001
 xxxxxxxx
 xxxxxxxx
 xxxxxxxx

@@ -14,201 +14,201 @@
 
 // PROGRAM		"Quartus II"
 // VERSION		"Version 9.0 Build 132 02/25/2009 SJ Web Edition"
-// CREATED ON	"Mon Jul 20 11:57:53 2020"
+// CREATED ON	"Wed Jul 22 16:40:09 2020"
 
 module CPU(
-	clock,
-	sequencer_reset,
-	registers_reset,
-	pc_reset
+	clk,
+	seq_reset,
+	seq_enable,
+	reg_reset,
+	ins,
+	mem_word_out,
+	pc_in,
+	ins_mem_clk,
+	data_mem_clk,
+	interrupt,
+	mem_address,
+	mem_read,
+	mem_word_in,
+	mem_write,
+	pc
 );
 
 
-input	clock;
-input	sequencer_reset;
-input	registers_reset;
-input	pc_reset;
+input	clk;
+input	seq_reset;
+input	seq_enable;
+input	reg_reset;
+input	[31:0] ins;
+input	[31:0] mem_word_out;
+input	[31:0] pc_in;
+output	ins_mem_clk;
+output	data_mem_clk;
+output	interrupt;
+output	[31:0] mem_address;
+output	[1:0] mem_read;
+output	[31:0] mem_word_in;
+output	[1:0] mem_write;
+output	[31:0] pc;
 
-wire	SYNTHESIZED_WIRE_0;
-wire	[4:0] SYNTHESIZED_WIRE_1;
-wire	[31:0] SYNTHESIZED_WIRE_51;
-wire	[31:0] SYNTHESIZED_WIRE_52;
-wire	[31:0] SYNTHESIZED_WIRE_4;
-wire	[1:0] SYNTHESIZED_WIRE_5;
-wire	SYNTHESIZED_WIRE_53;
+wire	[4:0] SYNTHESIZED_WIRE_0;
+wire	[31:0] SYNTHESIZED_WIRE_1;
+wire	[31:0] SYNTHESIZED_WIRE_41;
+wire	[1:0] SYNTHESIZED_WIRE_3;
+wire	SYNTHESIZED_WIRE_4;
+wire	SYNTHESIZED_WIRE_42;
 wire	[31:0] SYNTHESIZED_WIRE_7;
-wire	[31:0] SYNTHESIZED_WIRE_8;
-wire	[1:0] SYNTHESIZED_WIRE_10;
-wire	[1:0] SYNTHESIZED_WIRE_11;
-wire	[31:0] SYNTHESIZED_WIRE_54;
-wire	SYNTHESIZED_WIRE_13;
-wire	SYNTHESIZED_WIRE_14;
-wire	SYNTHESIZED_WIRE_55;
-wire	[2:0] SYNTHESIZED_WIRE_18;
+wire	[2:0] SYNTHESIZED_WIRE_8;
+wire	SYNTHESIZED_WIRE_9;
+wire	SYNTHESIZED_WIRE_10;
+wire	[5:0] SYNTHESIZED_WIRE_43;
+wire	[4:0] SYNTHESIZED_WIRE_13;
+wire	[4:0] SYNTHESIZED_WIRE_14;
+wire	[4:0] SYNTHESIZED_WIRE_15;
+wire	[31:0] SYNTHESIZED_WIRE_16;
+wire	SYNTHESIZED_WIRE_17;
+wire	SYNTHESIZED_WIRE_18;
 wire	SYNTHESIZED_WIRE_19;
 wire	SYNTHESIZED_WIRE_20;
-wire	[5:0] SYNTHESIZED_WIRE_56;
-wire	[4:0] SYNTHESIZED_WIRE_23;
-wire	[4:0] SYNTHESIZED_WIRE_24;
-wire	[4:0] SYNTHESIZED_WIRE_25;
-wire	[31:0] SYNTHESIZED_WIRE_26;
+wire	SYNTHESIZED_WIRE_21;
+wire	SYNTHESIZED_WIRE_22;
+wire	SYNTHESIZED_WIRE_23;
+wire	SYNTHESIZED_WIRE_24;
+wire	SYNTHESIZED_WIRE_25;
+wire	SYNTHESIZED_WIRE_26;
 wire	SYNTHESIZED_WIRE_27;
 wire	SYNTHESIZED_WIRE_28;
 wire	SYNTHESIZED_WIRE_29;
 wire	SYNTHESIZED_WIRE_30;
 wire	SYNTHESIZED_WIRE_31;
-wire	SYNTHESIZED_WIRE_32;
-wire	SYNTHESIZED_WIRE_33;
-wire	SYNTHESIZED_WIRE_34;
+wire	[31:0] SYNTHESIZED_WIRE_32;
+wire	[31:0] SYNTHESIZED_WIRE_33;
+wire	[4:0] SYNTHESIZED_WIRE_34;
 wire	SYNTHESIZED_WIRE_35;
 wire	SYNTHESIZED_WIRE_36;
 wire	SYNTHESIZED_WIRE_37;
 wire	SYNTHESIZED_WIRE_38;
-wire	SYNTHESIZED_WIRE_39;
-wire	SYNTHESIZED_WIRE_40;
-wire	SYNTHESIZED_WIRE_41;
-wire	[31:0] SYNTHESIZED_WIRE_42;
-wire	[31:0] SYNTHESIZED_WIRE_43;
-wire	[4:0] SYNTHESIZED_WIRE_44;
-wire	SYNTHESIZED_WIRE_46;
-wire	SYNTHESIZED_WIRE_47;
-wire	SYNTHESIZED_WIRE_48;
 
+assign	data_mem_clk = clk;
+assign	ins_mem_clk = SYNTHESIZED_WIRE_35;
+assign	mem_address = SYNTHESIZED_WIRE_1;
+assign	mem_word_in = SYNTHESIZED_WIRE_7;
 
 
 
 
 ALU_controller	b2v_inst(
-	.alu_enable(SYNTHESIZED_WIRE_0),
-	.opcode(SYNTHESIZED_WIRE_1),
-	.ADD_e(SYNTHESIZED_WIRE_27),
-	.SUB_e(SYNTHESIZED_WIRE_28),
-	.MUL_e(SYNTHESIZED_WIRE_29),
-	.DIV_e(SYNTHESIZED_WIRE_30),
-	.MOD_e(SYNTHESIZED_WIRE_31),
-	.MAX_e(SYNTHESIZED_WIRE_32),
-	.MIN_e(SYNTHESIZED_WIRE_33),
-	.NOT_e(SYNTHESIZED_WIRE_34),
-	.NAND_e(SYNTHESIZED_WIRE_35),
-	.XNOR_e(SYNTHESIZED_WIRE_36),
-	.SHL_e(SYNTHESIZED_WIRE_37),
-	.SHRL_e(SYNTHESIZED_WIRE_38),
-	.ROL_e(SYNTHESIZED_WIRE_39),
-	.ROR_e(SYNTHESIZED_WIRE_40),
-	.SLT_e(SYNTHESIZED_WIRE_41));
+	.opcode(SYNTHESIZED_WIRE_0),
+	.ADD_e(SYNTHESIZED_WIRE_17),
+	.SUB_e(SYNTHESIZED_WIRE_18),
+	.MUL_e(SYNTHESIZED_WIRE_19),
+	.DIV_e(SYNTHESIZED_WIRE_20),
+	.MOD_e(SYNTHESIZED_WIRE_21),
+	.MAX_e(SYNTHESIZED_WIRE_22),
+	.MIN_e(SYNTHESIZED_WIRE_23),
+	.NOT_e(SYNTHESIZED_WIRE_24),
+	.NAND_e(SYNTHESIZED_WIRE_25),
+	.XNOR_e(SYNTHESIZED_WIRE_26),
+	.SHL_e(SYNTHESIZED_WIRE_27),
+	.SHRL_e(SYNTHESIZED_WIRE_28),
+	.ROL_e(SYNTHESIZED_WIRE_29),
+	.ROR_e(SYNTHESIZED_WIRE_30),
+	.SLT_e(SYNTHESIZED_WIRE_31));
 
 
-CU_sequencer	b2v_inst10(
-	.cpu_clk(clock),
-	.reset(sequencer_reset),
-	.IF_clk(SYNTHESIZED_WIRE_53),
-	.ID_clk(SYNTHESIZED_WIRE_46),
-	.ALU_clk(SYNTHESIZED_WIRE_47),
-	.MEM_clk(SYNTHESIZED_WIRE_48),
-	.BR_clk(SYNTHESIZED_WIRE_55));
+sequencer	b2v_inst1(
+	.clk(clk),
+	.reset(seq_reset),
+	.enable(seq_enable),
+	.IF_clk(SYNTHESIZED_WIRE_35),
+	.ID_clk(SYNTHESIZED_WIRE_36),
+	.ALU_clk(SYNTHESIZED_WIRE_37),
+	.MEM_clk(SYNTHESIZED_WIRE_38),
+	.BR_clk(SYNTHESIZED_WIRE_42));
 
 
 write_back	b2v_inst11(
-	.alu_out(SYNTHESIZED_WIRE_51),
-	.imm(SYNTHESIZED_WIRE_52),
-	.mem_out(SYNTHESIZED_WIRE_4),
-	.select(SYNTHESIZED_WIRE_5),
-	.reg_write_data(SYNTHESIZED_WIRE_26));
-
-
-instruction_memory	b2v_inst14(
-	.clk(SYNTHESIZED_WIRE_53),
-	.pc(SYNTHESIZED_WIRE_7),
-	.ins(SYNTHESIZED_WIRE_8));
-	defparam	b2v_inst14.instructions_size = 256;
+	.alu_out(SYNTHESIZED_WIRE_1),
+	.imm(SYNTHESIZED_WIRE_41),
+	.mem_out(mem_word_out),
+	.select(SYNTHESIZED_WIRE_3),
+	.reg_write_data(SYNTHESIZED_WIRE_16));
 
 
 instruction_decoder	b2v_inst2(
-	.ins(SYNTHESIZED_WIRE_8),
-	.imm(SYNTHESIZED_WIRE_52),
-	.opcode(SYNTHESIZED_WIRE_56),
-	.reg1(SYNTHESIZED_WIRE_23),
-	.reg2(SYNTHESIZED_WIRE_24),
-	.reg3(SYNTHESIZED_WIRE_25),
-	.sr_amount(SYNTHESIZED_WIRE_44));
-
-
-memory	b2v_inst4(
-	.clk(clock),
-	.address(SYNTHESIZED_WIRE_51),
-	.mem_read(SYNTHESIZED_WIRE_10),
-	.mem_write(SYNTHESIZED_WIRE_11),
-	.word_in(SYNTHESIZED_WIRE_54),
-	.word_out(SYNTHESIZED_WIRE_4));
-	defparam	b2v_inst4.word_size = 64;
+	.ins(ins),
+	.imm(SYNTHESIZED_WIRE_41),
+	.opcode(SYNTHESIZED_WIRE_43),
+	.reg1(SYNTHESIZED_WIRE_13),
+	.reg2(SYNTHESIZED_WIRE_14),
+	.reg3(SYNTHESIZED_WIRE_15),
+	.sr_amount(SYNTHESIZED_WIRE_34));
 
 
 pc_controller	b2v_inst5(
-	.halt(SYNTHESIZED_WIRE_13),
-	.condition_bit(SYNTHESIZED_WIRE_14),
-	.reset(pc_reset),
-	.clk(SYNTHESIZED_WIRE_55),
-	.addr(SYNTHESIZED_WIRE_52),
-	.jreg(SYNTHESIZED_WIRE_54),
-	.opcode(SYNTHESIZED_WIRE_18),
-	.pc(SYNTHESIZED_WIRE_7));
+	.condition_bit(SYNTHESIZED_WIRE_4),
+	.clk(SYNTHESIZED_WIRE_42),
+	.addr(SYNTHESIZED_WIRE_41),
+	.jreg(SYNTHESIZED_WIRE_7),
+	.opcode(SYNTHESIZED_WIRE_8),
+	.pc_in(pc_in),
+	.pc(pc));
 
 
 register_file	b2v_inst7(
-	.reg_read(SYNTHESIZED_WIRE_19),
-	.reg_write(SYNTHESIZED_WIRE_20),
-	.reg_reset(registers_reset),
-	.clk(clock),
-	.imm(SYNTHESIZED_WIRE_52),
-	.opcode(SYNTHESIZED_WIRE_56),
-	.reg1(SYNTHESIZED_WIRE_23),
-	.reg2(SYNTHESIZED_WIRE_24),
-	.reg3(SYNTHESIZED_WIRE_25),
-	.write_data(SYNTHESIZED_WIRE_26),
-	.operand0(SYNTHESIZED_WIRE_54),
-	.operand1(SYNTHESIZED_WIRE_42),
-	.operand2(SYNTHESIZED_WIRE_43));
+	.reg_read(SYNTHESIZED_WIRE_9),
+	.reg_write(SYNTHESIZED_WIRE_10),
+	.reg_reset(reg_reset),
+	.clk(clk),
+	.imm(SYNTHESIZED_WIRE_41),
+	.opcode(SYNTHESIZED_WIRE_43),
+	.reg1(SYNTHESIZED_WIRE_13),
+	.reg2(SYNTHESIZED_WIRE_14),
+	.reg3(SYNTHESIZED_WIRE_15),
+	.write_data(SYNTHESIZED_WIRE_16),
+	.operand0(SYNTHESIZED_WIRE_7),
+	.operand1(SYNTHESIZED_WIRE_32),
+	.operand2(SYNTHESIZED_WIRE_33));
 
 
 ALU	b2v_inst8(
-	.ADD_e(SYNTHESIZED_WIRE_27),
-	.SUB_e(SYNTHESIZED_WIRE_28),
-	.MUL_e(SYNTHESIZED_WIRE_29),
-	.DIV_e(SYNTHESIZED_WIRE_30),
-	.MOD_e(SYNTHESIZED_WIRE_31),
-	.MAX_e(SYNTHESIZED_WIRE_32),
-	.MIN_e(SYNTHESIZED_WIRE_33),
-	.NOT_e(SYNTHESIZED_WIRE_34),
-	.NAND_e(SYNTHESIZED_WIRE_35),
-	.XNOR_e(SYNTHESIZED_WIRE_36),
-	.SHL_e(SYNTHESIZED_WIRE_37),
-	.SHRL_e(SYNTHESIZED_WIRE_38),
-	.ROL_e(SYNTHESIZED_WIRE_39),
-	.ROR_e(SYNTHESIZED_WIRE_40),
-	.SLT_e(SYNTHESIZED_WIRE_41),
-	.operand1(SYNTHESIZED_WIRE_42),
-	.operand2(SYNTHESIZED_WIRE_43),
-	.sr_amount(SYNTHESIZED_WIRE_44),
-	.zero_less_condition(SYNTHESIZED_WIRE_14),
-	.result(SYNTHESIZED_WIRE_51));
+	.ADD_e(SYNTHESIZED_WIRE_17),
+	.SUB_e(SYNTHESIZED_WIRE_18),
+	.MUL_e(SYNTHESIZED_WIRE_19),
+	.DIV_e(SYNTHESIZED_WIRE_20),
+	.MOD_e(SYNTHESIZED_WIRE_21),
+	.MAX_e(SYNTHESIZED_WIRE_22),
+	.MIN_e(SYNTHESIZED_WIRE_23),
+	.NOT_e(SYNTHESIZED_WIRE_24),
+	.NAND_e(SYNTHESIZED_WIRE_25),
+	.XNOR_e(SYNTHESIZED_WIRE_26),
+	.SHL_e(SYNTHESIZED_WIRE_27),
+	.SHRL_e(SYNTHESIZED_WIRE_28),
+	.ROL_e(SYNTHESIZED_WIRE_29),
+	.ROR_e(SYNTHESIZED_WIRE_30),
+	.SLT_e(SYNTHESIZED_WIRE_31),
+	.operand1(SYNTHESIZED_WIRE_32),
+	.operand2(SYNTHESIZED_WIRE_33),
+	.sr_amount(SYNTHESIZED_WIRE_34),
+	.zero_less_condition(SYNTHESIZED_WIRE_4),
+	.result(SYNTHESIZED_WIRE_1));
 
 
 CU_logic	b2v_inst9(
-	.IF_clk(SYNTHESIZED_WIRE_53),
-	.ID_clk(SYNTHESIZED_WIRE_46),
-	.ALU_clk(SYNTHESIZED_WIRE_47),
-	.MEM_clk(SYNTHESIZED_WIRE_48),
-	.RB_BR_clk(SYNTHESIZED_WIRE_55),
-	.opcode(SYNTHESIZED_WIRE_56),
-	.halt(SYNTHESIZED_WIRE_13),
-	.reg_read(SYNTHESIZED_WIRE_19),
-	.reg_write(SYNTHESIZED_WIRE_20),
-	.alu_enable(SYNTHESIZED_WIRE_0),
-	.alu_opcode(SYNTHESIZED_WIRE_1),
-	.branch_opcode(SYNTHESIZED_WIRE_18),
-	.mem_read(SYNTHESIZED_WIRE_10),
-	.mem_write(SYNTHESIZED_WIRE_11),
-	.mux_opcode(SYNTHESIZED_WIRE_5));
+	.IF_clk(SYNTHESIZED_WIRE_35),
+	.ID_clk(SYNTHESIZED_WIRE_36),
+	.ALU_clk(SYNTHESIZED_WIRE_37),
+	.MEM_clk(SYNTHESIZED_WIRE_38),
+	.RB_BR_clk(SYNTHESIZED_WIRE_42),
+	.opcode(SYNTHESIZED_WIRE_43),
+	.interrupt(interrupt),
+	.reg_read(SYNTHESIZED_WIRE_9),
+	.reg_write(SYNTHESIZED_WIRE_10),
+	.alu_opcode(SYNTHESIZED_WIRE_0),
+	.branch_opcode(SYNTHESIZED_WIRE_8),
+	.mem_read(mem_read),
+	.mem_write(mem_write),
+	.RB_mux_opcode(SYNTHESIZED_WIRE_3));
 
 
 endmodule

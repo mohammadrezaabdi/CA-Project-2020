@@ -18,7 +18,7 @@ module register_file(reg_read, reg_write, reg_reset, write_data, opcode, reg1, r
 	end
 
     //test
-    $writememb("tests/register_file.mem", register_file);
+    $writememb("tests/cpu_register_file.mem", register_file);
   end
 
   // write into register file
@@ -32,7 +32,7 @@ module register_file(reg_read, reg_write, reg_reset, write_data, opcode, reg1, r
       endcase
 
       //test
-      $writememb("tests/register_file.mem", register_file);
+      $writememb("tests/cpu_register_file.mem", register_file);
     end
   end
 
