@@ -2208,6 +2208,12 @@ applicable agreement for further details.
 	(pt 616 768)
 	(pt 1232 768)
 )
+(connector
+	(text "sel[2..0]" (rect 2440 1302 2452 1342)(font "Arial" )(vertical))
+	(pt 2456 1352)
+	(pt 2456 1288)
+	(bus)
+)
 (junction (pt 992 736))
 (junction (pt 976 752))
 (junction (pt 880 800))
