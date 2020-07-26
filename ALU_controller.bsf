@@ -20,9 +20,9 @@ applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 176 304)
+	(rect 16 16 176 336)
 	(text "ALU_controller" (rect 5 0 76 12)(font "Arial" ))
-	(text "inst" (rect 8 272 25 284)(font "Arial" ))
+	(text "inst" (rect 8 304 25 316)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -135,7 +135,21 @@ applicable agreement for further details.
 		(text "SLT_e" (rect 109 251 139 263)(font "Arial" ))
 		(line (pt 160 256)(pt 144 256)(line_width 1))
 	)
+	(port
+		(pt 160 272)
+		(output)
+		(text "BEQ_e" (rect 0 0 34 12)(font "Arial" ))
+		(text "BEQ_e" (rect 105 267 139 279)(font "Arial" ))
+		(line (pt 160 272)(pt 144 272)(line_width 1))
+	)
+	(port
+		(pt 160 288)
+		(output)
+		(text "BLT_e" (rect 0 0 30 12)(font "Arial" ))
+		(text "BLT_e" (rect 109 283 139 295)(font "Arial" ))
+		(line (pt 160 288)(pt 144 288)(line_width 1))
+	)
 	(drawing
-		(rectangle (rect 16 16 144 272)(line_width 1))
+		(rectangle (rect 16 16 144 304)(line_width 1))
 	)
 )

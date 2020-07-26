@@ -14,7 +14,7 @@
 
 // PROGRAM		"Quartus II"
 // VERSION		"Version 9.0 Build 132 02/25/2009 SJ Web Edition"
-// CREATED ON	"Thu Jul 23 03:54:25 2020"
+// CREATED ON	"Mon Jul 27 03:42:37 2020"
 
 module machine(
 	reg_file_reset,

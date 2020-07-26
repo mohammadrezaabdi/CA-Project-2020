@@ -65,13 +65,7 @@ module CU_logic (interrupt, opcode, IF_clk, ID_clk, ALU_clk, MEM_clk, RB_BR_clk,
   always @ (posedge ALU_clk) begin // ALU opcodes & branch handling
     if (!INVALID) begin
       if (!HLT && !IMM_TO_REG && !JMP && !JR) begin
-        if (BEQ) begin
-          alu_opcode = 5'b00010; // SUB
-        end
-        else if (BLT) begin
-          alu_opcode = 5'b01111; // SLT
-        end
-        else if (MEMORY) begin
+        if (MEMORY) begin
           alu_opcode = 5'b10010; // ADDI
         end
         else begin // arithmatic & immediate format
