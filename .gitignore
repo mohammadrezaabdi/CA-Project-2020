@@ -18,3 +18,6 @@
 !doc/
 !alu/main/
 !alu/main/format1/
+!alu/main/format1_blocks/
+!alu/main/format4/
+!alu/main/format4_blocks/
