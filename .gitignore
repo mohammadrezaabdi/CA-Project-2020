@@ -16,4 +16,5 @@
 !tests/
 !alu/
 !doc/
+!alu/main/
 !alu/main/format1/
