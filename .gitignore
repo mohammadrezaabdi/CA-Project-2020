@@ -11,6 +11,9 @@
 !*.txt
 !*.pdf
 !*.docx
+!*.inc
+!*.qip
 !tests/
 !alu/
 !doc/
+!alu/main/format1/
