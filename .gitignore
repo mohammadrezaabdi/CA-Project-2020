@@ -14,6 +14,7 @@
 !*.inc
 !*.qip
 !tests/
+!tests/codes
 !alu/
 !doc/
 !alu/main/
@@ -23,3 +24,4 @@
 !alu/main/format4_blocks/
 !*.py
 !*.txt
+!
