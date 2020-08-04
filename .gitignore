@@ -22,3 +22,4 @@
 !alu/main/format4/
 !alu/main/format4_blocks/
 !*.py
+!*.txt
