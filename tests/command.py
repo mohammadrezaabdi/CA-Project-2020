@@ -34,7 +34,7 @@ class LoadImmediate(Command):
         self.immediate = immediate
 
     def to_bin(self):
-        return f"{upcodes[self.instruction]}_{self.dst:05b}_{self.src:05b}_{self.immediate:016b}"
+        return f"{upcodes[self.instruction]}_{self.dst:05b}_{self.src:05b}_{self.immediate & 0xffff:016b}"
 
 
 class LogicImmediate(Command):
@@ -46,7 +46,7 @@ class LogicImmediate(Command):
         self.immediate = immediate
 
     def to_bin(self):
-        return f"{upcodes[self.instruction]}_{self.dst:05b}_{self.src:05b}_{self.immediate:016b}"
+        return f"{upcodes[self.instruction]}_{self.dst:05b}_{self.src:05b}_{self.immediate & 0xffff:016b}"
 
 
 class Memory(Command):
@@ -58,7 +58,7 @@ class Memory(Command):
         self.offset = offset
 
     def to_bin(self):
-        return f"{upcodes[self.instruction]}_{self.vr:05b}_{self.ar:05b}_{self.offset:016b}"
+        return f"{upcodes[self.instruction]}_{self.vr:05b}_{self.ar:05b}_{self.offset & 0xffff:016b}"
 
 
 class Jump(Command):
@@ -70,7 +70,7 @@ class Jump(Command):
         self.address = address
 
     def to_bin(self):
-        return f"{upcodes[self.instruction]}_{self.reg1:05b}_{self.reg2:05b}_{self.address:016b}"
+        return f"{upcodes[self.instruction]}_{self.reg1:05b}_{self.reg2:05b}_{self.address & 0xffff:016b}"
 
 
 def get_register_number(name):
