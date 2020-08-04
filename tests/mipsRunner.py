@@ -77,5 +77,12 @@ class MipsRunner:
         self.show_info()
 
     def show_info(self):
+        with open('memory.mem', 'w') as f:
+            for value in self.memory:
+                f.write(f'{value:032b}\n')
+
+        with open('cpu_register_file.mem', 'w') as f:
+            for value in self.registers:
+                f.write(f'{value:032b}\n')
         print('registers:', self.registers)
         print('memory:', self.memory)
