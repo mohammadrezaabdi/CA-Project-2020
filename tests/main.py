@@ -10,5 +10,11 @@ if __name__ == '__main__':
 
     mipsRunner.save_to_bin('out.mem')
 
-    mipsRunner.memory[0] = 10
+
+    with open('input_memory.mem') as f:
+        lines = f.readlines()
+        lines = [line[:-1] for line in lines]
+        for i in range(64):
+            mipsRunner.memory[i] = int(lines[i], 2)
+
     mipsRunner.run()
