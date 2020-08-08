@@ -36,7 +36,11 @@ module data_memory (mem_read, mem_write, word_in, word_out, address, clk);
     end
 
     //test
-    $writememb("tests/memory.mem", entries);
+    $writememb("tests/out/memory.mem", entries);
+  end
+
+  initial begin
+    $readmemb("tests/initial_data_memory.mem", entries);
   end
 
 endmodule

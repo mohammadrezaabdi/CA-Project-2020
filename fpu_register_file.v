@@ -17,7 +17,7 @@ module fpu_register_file(reg1, reg2, reg3, reg_read, reg_write, write_data, reg_
     end
 
     //test
-    $writememb("tests/fpu_register_file.mem", register_file);
+    $writememb("tests/out/fpu_register_file.mem", register_file);
   end
 
   // write into register file
@@ -26,7 +26,7 @@ module fpu_register_file(reg1, reg2, reg3, reg_read, reg_write, write_data, reg_
         register_file[reg1] = write_data;
 
       //test
-      $writememb("tests/fpu_register_file.mem", register_file);
+      $writememb("tests/out/fpu_register_file.mem", register_file);
     end
   end
 

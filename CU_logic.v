@@ -32,7 +32,7 @@ module CU_logic (interrupt, opcode, IF_clk, ID_clk, ALU_clk, MEM_clk, RB_BR_clk,
   wire ALU_TO_REG = (!HLT && !LDI && !LUI && opcode[5:3] < 3'b011) ? 1'b1 : 1'b0;
   wire ALU = (ALU_TO_REG || BEQ || BLT || MEMORY);
   wire IMM_TO_REG = (LDI || LUI) ? 1'b1 : 1'b0;
-  wire INVALID = (!MEMORY && !ALU && !IMM_TO_REG && !BRANCH && !MTC || opcode == 6'b111111) ? 1'b1 : 1'b0;
+  wire INVALID = (!HLT && !MEMORY && !ALU && !IMM_TO_REG && !BRANCH && !MTC || opcode == 6'b111111) ? 1'b1 : 1'b0;
 
   always @ (posedge IF_clk) begin // signals Initialization
     branch_opcode = 3'b011;

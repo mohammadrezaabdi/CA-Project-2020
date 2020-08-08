@@ -10,7 +10,7 @@ module instruction_decoder(ins, opcode, reg1, reg2, reg3, imm, sr_amount);
   assign reg2 = ins[20:16];
   assign reg3 = (|ins && ins[30] == 1'b0) ? ins[15:11] : 5'b0;
   assign sr_amount = (|ins && ins[30] == 1'b0) ? ins[10:6] : 5'b0;
-  wire reserved = (|ins && ins[30] == 1'b0) ? ins[5:0] : 6'b0;
+  //wire reserved = (|ins && ins[30] == 1'b0) ? ins[5:0] : 6'b0;
   assign imm = (ins[30] == 1'b1) ? {{16{ins[15]}}, ins[15:0]} : 32'b0;
 
 endmodule

@@ -12,7 +12,7 @@ module instruction_memory(pc, ins0, ins1, clk_en);
 	reg [31:0] ins0, ins1;
 
 	initial begin
-		$readmemb("tests/validtest.mem", instructions_data);
+		$readmemb("tests/out.mem", instructions_data);
 	end
 
 	always @ (posedge clk_en) begin

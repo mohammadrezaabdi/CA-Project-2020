@@ -15,7 +15,7 @@ module pc_controller (opcode, pc_in, jreg, addr, condition_bit, pc, clk);
   always @ (posedge clk) begin
 
         //test
-        $display($time, " branch opcode = %b   address = %d   final address = %d", opcode, addr, {addr[29:0], 2'b00} + pc);
+        $display($time, " branch opcode = %b  condition_bit = %d  address = %d   final address = %d", opcode, condition_bit, addr, {addr[29:0], 2'b00} + pc);
 
       case (opcode)
         3'b011: pc = pc + 4;

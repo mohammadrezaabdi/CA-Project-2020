@@ -16,6 +16,18 @@ module fpu_ALU (operand1, operand2, ADD, SUB, MUL, DIV, INV, ABS, COM, BLT, BEQ,
     if (SUB) begin
       result = operand1 - operand2;
     end
+    if (MUL) begin
+      result = operand1 * operand2;
+    end
+    if (DIV) begin
+      result = operand1 / operand2;
+    end
+    if (INV) begin
+      result = operand1;
+    end
+    if (ABS) begin
+      result = operand1;
+    end
     if (COM) begin
       if (operand1 < operand2) begin
         result = 32'b1;

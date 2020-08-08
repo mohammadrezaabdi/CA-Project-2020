@@ -25,7 +25,7 @@ module testbench ();
 	  					clock = 0;
     #PERIOD  	reg_file_reset = 1; sequencer_reset = 1; pc_reset = 1; interrupt_reset = 1;
 		#PERIOD		reg_file_reset = 0; sequencer_reset = 0; pc_reset = 0; interrupt_reset = 0;
-    #400  		$stop;
+    #1000  		$stop;
 	end
 
 	always @ (DIVZ or QNAN or SNAN or INEX or OVFL or UNFL) begin
