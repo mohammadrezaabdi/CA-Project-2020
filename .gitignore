@@ -13,6 +13,7 @@
 !*.docx
 !*.inc
 !*.qip
+!*.mp4
 !tests/
 !tests/codes
 !alu/
