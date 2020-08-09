@@ -40,7 +40,7 @@ module data_memory (mem_read, mem_write, word_in, word_out, address, clk);
   end
 
   initial begin
-    $readmemb("tests/initial_data_memory.mem", entries);
+    $readmemb("tests/in/initial_data_memory.mem", entries);
   end
 
 endmodule
