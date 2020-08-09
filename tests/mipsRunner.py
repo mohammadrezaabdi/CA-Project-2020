@@ -79,7 +79,7 @@ class MipsRunner:
     def show_info(self):
         with open('memory.mem', 'w') as f:
             for value in self.memory:
-                f.write(f'{value & 0xffffffff:032b}\n')
+                f.write(f'{value & 0xffffffff:08b}\n')
 
         with open('cpu_register_file.mem', 'w') as f:
             for value in self.registers:
